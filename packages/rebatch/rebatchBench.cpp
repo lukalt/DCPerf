@@ -420,7 +420,7 @@ class RebatchBenchmark {
 
           // Perform the memcpy operation
           std::memcpy(output + totalProcessedBytes, srcPtr, inputNbytes);
-          totalProcessedBytes += inputNbytes;
+          totalProcessedBytes += 2 * inputNbytes;
         }
       } else {
         // Without prefetching - baseline implementation
@@ -434,7 +434,7 @@ class RebatchBenchmark {
 
           // Perform the memcpy operation
           std::memcpy(output + totalProcessedBytes, srcPtr, inputNbytes);
-          totalProcessedBytes += inputNbytes;
+          totalProcessedBytes += 2 * inputNbytes;
         }
       }
 
