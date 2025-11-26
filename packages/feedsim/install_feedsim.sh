@@ -45,14 +45,6 @@ verify_checksum() {
 }
 
 ARCH="$(uname -p)"
-if distro_is_like ubuntu; then
-  if [ "$ARCH" = "aarch64" ]; then
-    "${FEEDSIM_ROOT}"/install_feedsim_aarch64_ubuntu.sh
-  else
-    "${FEEDSIM_ROOT}"/install_feedsim_ubuntu.sh
-  fi
-  exit $?
-fi
 
 if distro_is_like ubuntu; then
   apt install -y bc cmake ninja-build flex bison texinfo binutils-dev \
