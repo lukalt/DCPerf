@@ -54,10 +54,19 @@ if distro_is_like ubuntu; then
   exit $?
 fi
 
-dnf install -y bc ninja-build flex bison git texinfo binutils-devel \
+if distro_is_like ubuntu; then
+  apt install -y bc cmake ninja-build flex bison texinfo binutils-dev \
+    libunwind-dev bzip2 libbz2-dev libsodium-dev libghc-double-conversion-dev \
+    libzstd-dev lz4 liblz4-dev xzip libsnappy-dev libtool libssl-dev \
+    zlib1g-dev libdwarf-dev libaio-dev libatomic1 patch perl libiberty-dev \
+    libfmt-dev sysstat jq xxhash libxxhash-dev
+else
+  dnf install -y bc ninja-build flex bison git texinfo binutils-devel \
     libsodium-devel libunwind-devel bzip2-devel double-conversion-devel \
     libzstd-devel lz4-devel xz-devel snappy-devel libtool bzip2 openssl-devel \
     zlib-devel libdwarf libdwarf-devel libaio-devel libatomic patch jq xxhash xxhash-devel
+fi
+
 
 # Creates feedsim directory under benchmarks/
 mkdir -p "${BENCHPRESS_ROOT}/benchmarks/feedsim"
