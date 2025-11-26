@@ -253,5 +253,5 @@ cmake -G Ninja \
     -DCMAKE_EXE_LINKER_FLAGS_RELEASE="$FS_LDFLAGS" \
     ../
 
-ninja-build -j"$(nproc)"
+ninja -j"$(nproc)"
 msg "Building FeedSim ... DONE"
