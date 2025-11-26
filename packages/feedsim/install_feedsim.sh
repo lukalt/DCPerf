@@ -83,7 +83,11 @@ DEP_CMAKE_VERSION="4.0.3"
 # Installing cmake
 if ! [ -d "cmake-${DEP_CMAKE_VERSION}-linux-${ARCH}" ]; then
     wget "https://github.com/Kitware/CMake/releases/download/v${DEP_CMAKE_VERSION}/cmake-${DEP_CMAKE_VERSION}-linux-${ARCH}.tar.gz" -O "cmake-${DEP_CMAKE_VERSION}-linux-${ARCH}.tar.gz"
-    verify_checksum "cmake-${DEP_CMAKE_VERSION}-linux-${ARCH}.tar.gz" "391da1544ef50ac31300841caaf11db4de3976cdc4468643272e44b3f4644713"
+    if [ "$ARCH" = "aarch64"]; then
+      verify_checksum "cmake-${DEP_CMAKE_VERSION}-linux-${ARCH}.tar.gz" "391da1544ef50ac31300841caaf11db4de3976cdc4468643272e44b3f4644713"
+    else
+      verify_checksum "cmake-${DEP_CMAKE_VERSION}-linux-${ARCH}.tar.gz" "585ae9e013107bc8e7c7c9ce872cbdcbdff569e675b07ef57aacfb88c886faac"
+    fi
     tar xfz "cmake-${DEP_CMAKE_VERSION}-linux-${ARCH}.tar.gz"
     export PATH="${FEEDSIM_THIRD_PARTY_SRC}/cmake-${DEP_CMAKE_VERSION}-linux-${ARCH}/bin:${PATH}"
 else
